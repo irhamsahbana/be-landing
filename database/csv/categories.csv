@@ -1,4 +1,12 @@
 ID,CATEGORY_ID,NAME,LABEL,NOTES,GROUP_BY
+8bbfbe57-c52a-484e-8d58-4a79f7e1e6a4,,engineering,Engineering,,industries
+c9475bf2-715e-47d7-8ef7-1ef7d7ebf080,,enterpreneurship,Enterpreneurship,,industries
+c861f0b0-7440-48e4-8176-0f032264be8f,,finance,Finance,,industries
+8c7cf34e-94ae-464a-98f8-4823a9a33d18,,law,Law,,industries
+d6e2d412-b46d-44e2-9bf5-570eeec548af,,marketing,Marketing,,industries
+246ca903-c2b8-4b34-b90d-fb965d553bfd,,medicine,Medicine,,industries
+a1c7af70-e4ba-4512-8f4e-4902883b68ee,,politics,Politics,,industries
+78e1220a-33a0-4c6b-83d2-e6b44285694b,,technology,Technology,,industries
 59c6280f-7db1-4643-b1f3-3541a844819e,,administrator,Administrator,Administrator,people
 44ad8a4e-7470-4311-a3dd-79264c9eff98,,customer,Customer,Pelanggan,people
 ab4e75c4-e045-40b3-b95a-92dfdfc798a6,,administrator,Administrator,Administrator,permission_groups

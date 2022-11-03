@@ -16,15 +16,13 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('category_id');
-            $table->uuid('city_id')->nullable();
+            $table->uuid('industry_id')->nullable();
             $table->string('ref_no')->unique()->nullable();
+            $table->unsignedTinyInteger('mentor_mentee')->nullable()->comment('0 = mentor, 1 = mentee');
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
-            $table->string('address')->nullable();
-            $table->string('bio')->nullable();
-            $table->string('social_medias')->nullable();
-            $table->decimal('fee', 15, 2, true)->nullable();
+            $table->string('comments')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

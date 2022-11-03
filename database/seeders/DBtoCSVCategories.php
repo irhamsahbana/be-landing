@@ -28,7 +28,7 @@ class DBtoCSVCategories extends Seeder
             );
         }
 
-        $data = Category::whereIn('group_by', ['people', 'permissions', 'permission_groups'])
+        $data = Category::whereIn('group_by', ['people', 'permissions', 'permission_groups', 'industries'])
                         ->orderBy('group_by', 'asc')
                         ->orderBy('name', 'asc')
                         ->get()

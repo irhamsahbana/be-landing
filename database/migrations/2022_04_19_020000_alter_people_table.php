@@ -18,8 +18,8 @@ class AlterPeopleTable extends Migration
             $table->foreign('category_id')
             ->references('id')->on('categories');
 
-            $table->index('city_id');
-            $table->foreign('city_id')
+            $table->index('industry_id');
+            $table->foreign('industry_id')
             ->references('id')->on('categories');
         });
     }
