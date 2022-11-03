@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use App\Models\{
     Category,
@@ -20,8 +21,8 @@ class CategorySeeder extends Seeder
     {
        $csvList = [
         storage::disk('database')->path('csv/categories.csv'),
-        storage::disk('database')->path('csv/provinces-cities.csv'),
-        storage::disk('database')->path('csv/courses-course_levels.csv')
+        // storage::disk('database')->path('csv/provinces-cities.csv'),
+        // storage::disk('database')->path('csv/courses-course_levels.csv')
        ];
 
        foreach ($csvList as $csvFilePath) {
@@ -38,7 +39,7 @@ class CategorySeeder extends Seeder
 
         foreach ($categories as $category) {
             Category::updateOrCreate(
-                ['id' => $category['ID']],
+                ['id' => $category['ID'] == "" ? Str::uuid()->toString() : $category['ID']],
                 [
                     'category_id' => $category['CATEGORY_ID'] == "" ? null : $category['CATEGORY_ID'],
                     'name' => $category['NAME'],
