@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('country_code')->nullable();
             $table->boolean('is_mentor');
-            $table->string('messages')->nullable();
+            $table->string('message')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

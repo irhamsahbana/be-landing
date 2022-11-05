@@ -87,7 +87,7 @@ class AuthController extends Controller
                 'string',
                 'max:20'
             ],
-            'messages' => ['nullable', 'string', 'max:150'],
+            'message' => ['nullable', 'string', 'max:150'],
         ];
 
         $validator = Validator::make($fields, $rules);
