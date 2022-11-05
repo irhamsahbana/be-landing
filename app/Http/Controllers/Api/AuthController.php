@@ -79,7 +79,7 @@ class AuthController extends Controller
             'email' => ['required', 'email:rfc'],
             'country_code' => [
                 'nullable',
-                'string',
+                'integer',
                 'between:1,999'
             ],
             'phone' => [
