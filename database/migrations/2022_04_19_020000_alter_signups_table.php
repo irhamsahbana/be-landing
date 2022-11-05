@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterPeopleTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,7 @@ class AlterPeopleTable extends Migration
      */
     public function up()
     {
-        Schema::table('people', function (Blueprint $table) {
-            $table->index('category_id');
-            $table->foreign('category_id')
-            ->references('id')->on('categories');
-
+        Schema::table('signups', function (Blueprint $table) {
             $table->index('industry_id');
             $table->foreign('industry_id')
             ->references('id')->on('categories');
@@ -31,12 +27,9 @@ class AlterPeopleTable extends Migration
      */
     public function down()
     {
-        Schema::table('people', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
-            $table->dropIndex(['category_id']);
-
+        Schema::table('signups', function (Blueprint $table) {
             $table->dropForeign(['industry_id']);
             $table->dropIndex(['industry_id']);
         });
     }
-}
+};

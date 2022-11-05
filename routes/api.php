@@ -40,3 +40,4 @@ Route::middleware('auth:sanctum')->group(function() {
 
 Route::post("auth/login", [AuthController::class, 'attempt']);
 Route::get('public-categories', [CategoryController::class, 'indexPublic']);
+Route::post('signups', [AuthController::class, 'signup']);

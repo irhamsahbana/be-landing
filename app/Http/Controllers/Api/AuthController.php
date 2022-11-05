@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 use App\Libs\Response;
+use App\Models\Signup;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -57,5 +59,45 @@ class AuthController extends Controller
 
         $response = new Response();
         return $response->json(null, 'Logout all success');
+    }
+
+    public function signup(Request $request)
+    {
+        $fields = $request->all();
+
+        $rules = [
+            'is_mentor' => ['required', 'boolean'],
+            'industry_id' => [
+                'required',
+                'uuid',
+                Rule::exists('categories', 'id')->where(function ($query) {
+                    $query->where('group_by', 'industries');
+                })
+            ],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email:rfc'],
+            'country_code' => [
+                'nullable',
+                'string',
+                'between:1,999'
+            ],
+            'phone' => [
+                'nullable',
+                'string',
+                'max:20'
+            ],
+            'messages' => ['nullable', 'string', 'max:150'],
+        ];
+
+        $validator = Validator::make($fields, $rules);
+        $response = new Response();
+        if ($validator->fails())
+            return $response->json(null, $validator->errors(), HttpResponse::HTTP_UNPROCESSABLE_ENTITY);
+
+        $signup = Signup::create($fields);
+
+
+        return $response->json($signup->toArray(), 'Signup success');
     }
 }

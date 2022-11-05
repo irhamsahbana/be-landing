@@ -18,11 +18,8 @@ class CreatePeopleTable extends Migration
             $table->uuid('category_id');
             $table->uuid('industry_id')->nullable();
             $table->string('ref_no')->unique()->nullable();
-            $table->unsignedTinyInteger('mentor_mentee')->nullable()->comment('0 = mentor, 1 = mentee');
+            $table->boolean('is_mentor')->nullable()->comment('1 = mentor, 0 = mentee');
             $table->string('name');
-            $table->string('email')->unique()->nullable();
-            $table->string('phone')->unique()->nullable();
-            $table->string('comments')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
