@@ -88,7 +88,6 @@ class AuthController extends Controller
                 'required_with:country_code',
                 'required_if:is_mentor,1',
                 'integer',
-                'max:20',
             ],
             'message' => ['nullable', 'string', 'max:150'],
         ];
