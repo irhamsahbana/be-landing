@@ -69,8 +69,8 @@ class AuthController extends Controller
             'is_mentor' => ['required', 'boolean'],
             'industry_id' => [
                 'nullable',
-                'required_if:is_mentor,1',
                 'uuid',
+                Rule::requiredIf(fn () => $request->is_mentor),
                 Rule::exists('categories', 'id')->where(function ($query) {
                     $query->where('group_by', 'industries');
                 })
@@ -86,19 +86,21 @@ class AuthController extends Controller
             ],
             'phone' => [
                 'nullable',
-                'required_with:country_code',
-                'required_if:is_mentor,1',
                 'integer',
+                Rule::requiredIf(fn () => $request-> $request->is_mentor),
             ],
             'message' => ['nullable', 'string', 'max:150'],
         ];
 
         $messages = [
             'industry_id.required_if' => 'Please choose one industry.',
+
             'first_name.required_without_all' => 'First Name and Last Name cannot be empty.',
             'last_name.required_without_all' => '',
+
             'email.required' => 'Email cannot be empty.',
             'email.email' => 'Please enter a correct email address.',
+
             'phone.required_if' => 'Phone number cannot be empty.',
             'phone.integer' => 'Please enter a correct phone number.',
         ];
