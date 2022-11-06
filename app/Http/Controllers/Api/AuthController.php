@@ -75,8 +75,8 @@ class AuthController extends Controller
                     $query->where('group_by', 'industries');
                 })
             ],
-            'first_name' => ['required_without_all:last_name', 'string', 'max:255'],
-            'last_name' => ['required_without_all:first_name', 'string', 'max:255'],
+            'first_name' => ['required_with:last_name', 'string', 'max:255'],
+            'last_name' => ['required_with:first_name', 'string', 'max:255'],
             'email' => ['required', 'email:rfc,dns'],
             'country_code' => [
                 'nullable',
@@ -95,8 +95,8 @@ class AuthController extends Controller
         $messages = [
             'industry_id.required_if' => 'Please choose one industry.',
 
-            'first_name.required_without_all' => 'First Name and Last Name cannot be empty.',
-            'last_name.required_without_all' => '',
+            'first_name.required_with' => 'First Name and Last Name cannot be empty.',
+            'last_name.required_with' => '',
 
             'email.required' => 'Email cannot be empty.',
             'email.email' => 'Please enter a correct email address.',
