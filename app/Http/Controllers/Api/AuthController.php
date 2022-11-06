@@ -115,7 +115,7 @@ class AuthController extends Controller
         $fields['country_code'] = str_replace('+', '', $fields['country_code']);
 
         //remove country code when phone is empty
-        if (isset($fields['phone']) && empty($fields['phone']))
+        if (empty($fields['phone']) && $fields['is_mentor'] == false)
         $fields['country_code'] = null;
 
     $signup = Signup::create($fields);
