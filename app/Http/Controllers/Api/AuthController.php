@@ -96,7 +96,7 @@ class AuthController extends Controller
             'industry_id.required_if' => 'Please choose one industry.',
 
             'first_name.required_with' => 'First Name and Last Name cannot be empty.',
-            'last_name.required_with' => '',
+            'last_name.required_with' => 'First Name and Last Name cannot be empty.',
 
             'email.required' => 'Email cannot be empty.',
             'email.email' => 'Please enter a correct email address.',
