@@ -87,7 +87,7 @@ class AuthController extends Controller
             'phone' => [
                 'nullable',
                 'integer',
-                Rule::requiredIf(fn () => $request-> $request->is_mentor),
+                Rule::requiredIf(fn () => $request->is_mentor),
             ],
             'message' => ['nullable', 'string', 'max:150'],
         ];
