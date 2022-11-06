@@ -93,7 +93,7 @@ class AuthController extends Controller
         ];
 
         $messages = [
-            'industry_id.requiredIf' => 'Please choose one industry.',
+            'industry_id.required_if' => 'Please choose one industry.',
 
             'first_name.required_without_all' => 'First Name and Last Name cannot be empty.',
             'last_name.required_without_all' => '',
@@ -101,7 +101,7 @@ class AuthController extends Controller
             'email.required' => 'Email cannot be empty.',
             'email.email' => 'Please enter a correct email address.',
 
-            'phone.requiredIf' => 'Phone number cannot be empty.',
+            'phone.required_if' => 'Phone number cannot be empty.',
             'phone.integer' => 'Please enter a correct phone number.',
         ];
 
