@@ -68,6 +68,7 @@ class AuthController extends Controller
         $rules = [
             'is_mentor' => ['required', 'boolean'],
             'industry_id' => [
+                'nullable',
                 'required_if:is_mentor,1',
                 'uuid',
                 Rule::exists('categories', 'id')->where(function ($query) {
