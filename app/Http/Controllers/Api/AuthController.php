@@ -68,36 +68,53 @@ class AuthController extends Controller
         $rules = [
             'is_mentor' => ['required', 'boolean'],
             'industry_id' => [
-                'required',
+                'required_if:is_mentor,1',
                 'uuid',
                 Rule::exists('categories', 'id')->where(function ($query) {
                     $query->where('group_by', 'industries');
                 })
             ],
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email:rfc'],
+            'first_name' => ['required_without_all:last_name', 'string', 'max:255'],
+            'last_name' => ['required_without_all:first_name', 'string', 'max:255'],
+            'email' => ['required', 'email:rfc,dns'],
             'country_code' => [
                 'nullable',
                 'integer',
-                'between:1,999'
+                'between:1,999',
+                'required_with:phone',
             ],
             'phone' => [
                 'nullable',
-                'string',
-                'max:20'
+                'required_with:country_code',
+                'required_if:is_mentor,1',
+                'integer',
+                'max:20',
             ],
             'message' => ['nullable', 'string', 'max:150'],
         ];
 
-        $validator = Validator::make($fields, $rules);
+        $messages = [
+            'industry_id.required_if' => 'Please choose one industry.',
+            'first_name.required_without_all' => 'First Name and Last Name cannot be empty.',
+            'last_name.required_without_all' => '',
+            'email.required' => 'Email cannot be empty.',
+            'email.email' => 'Please enter a correct email address.',
+            'phone.required_if' => 'Phone number cannot be empty.',
+            'phone.integer' => 'Please enter a correct phone number.',
+        ];
+
+        $validator = Validator::make($fields, $rules, $messages);
         $response = new Response();
         if ($validator->fails())
             return $response->json(null, $validator->errors(), HttpResponse::HTTP_UNPROCESSABLE_ENTITY);
 
-        $signup = Signup::create($fields);
+        //remove + in country code
+        if (isset($fields['country_code']))
+        $fields['country_code'] = str_replace('+', '', $fields['country_code']);
+
+    $signup = Signup::create($fields);
 
 
-        return $response->json($signup->toArray(), 'Signup success');
-    }
+    return $response->json($signup->toArray(), 'Signup success');
+}
 }

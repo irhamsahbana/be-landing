@@ -21,6 +21,7 @@ class Signup extends Model
 
     protected $casts = [
         'is_mentor' => 'boolean',
+        'country_id' => 'integer',
     ];
 
     public function industry()
