@@ -63,14 +63,14 @@ class AuthController extends Controller
 
     public function signup(Request $request)
     {
+        $response = new Response();
         $fields = $request->all();
 
         $rules = [
             'is_mentor' => ['required', 'boolean'],
             'industry_id' => [
-                'nullable',
+                'required',
                 'uuid',
-                Rule::requiredIf(fn () => $request->is_mentor),
                 Rule::exists('categories', 'id')->where(function ($query) {
                     $query->where('group_by', 'industries');
                 })
@@ -79,50 +79,47 @@ class AuthController extends Controller
             'last_name' => ['required_without:first_name', 'string', 'max:255'],
             'email' => ['required', 'email:rfc,dns'],
             'country_code' => [
-                'nullable',
+                'required',
                 'integer',
                 'between:1,999',
-                'required_with:phone',
             ],
-            'phone' => [
-                'nullable',
-                'integer',
-                Rule::requiredIf(fn () => $request->is_mentor),
-            ],
+            'phone' => ['required', 'string', 'max:255'],
             'message' => ['nullable', 'string', 'max:150'],
         ];
 
         $messages = [
-            'industry_id.required_if' => 'Please choose one industry.',
+            'industry_id.required' => 'Please choose one industry.',
 
             'first_name.required_without' => 'First Name and Last Name cannot be empty.',
             'last_name.required_without' => 'First Name and Last Name cannot be empty.',
 
+            'first_name.max' => 'First Name must be less than 255 characters.',
+            'last_name.max' => 'Last Name must be less than 255 characters.',
+
             'email.required' => 'Email cannot be empty.',
             'email.email' => 'Please enter a correct email address.',
 
-            'phone.required_if' => 'Phone number cannot be empty.',
-            'phone.integer' => 'Please enter a correct phone number.',
+            'phone.required' => 'Phone number cannot be empty.',
+            'phone.string' => 'Please enter a correct phone number.',
 
             'message.max' => 'Message cannot be more than 150 characters.',
         ];
 
         $validator = Validator::make($fields, $rules, $messages);
-        $response = new Response();
+
         if ($validator->fails())
             return $response->json(null, $validator->errors(), HttpResponse::HTTP_UNPROCESSABLE_ENTITY);
 
         //remove + in country code
         if (isset($fields['country_code']))
-        $fields['country_code'] = str_replace('+', '', $fields['country_code']);
+            $fields['country_code'] = str_replace('+', '', (string) $fields['country_code']);
 
-        //remove country code when phone is empty
-        if (empty($fields['phone']) && $fields['is_mentor'] == false)
-        $fields['country_code'] = null;
+        //remove all characters except numbers in phone number
+        if (isset($fields['phone']))
+            $fields['phone'] = preg_replace('/[^0-9]/', '', $fields['phone']);
 
-    $signup = Signup::create($fields);
+        $signup = Signup::create($fields);
 
-
-    return $response->json($signup->toArray(), 'Signup success');
-}
+        return $response->json($signup->toArray(), 'Signup success');
+    }
 }
