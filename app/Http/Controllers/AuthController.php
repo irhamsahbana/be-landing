@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Signup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,5 +33,17 @@ class AuthController extends Controller
         $request->session()->invalidate();
 
         return redirect()->route('auth.login');
+    }
+
+    public function verifyEmail(Request $request)
+    {
+        $data = Signup::where('token', $request->token)->first();
+
+        if ($data) {
+            $data->verified_at = now('UTC');
+            $data->save();
+        }
+
+        return redirect()->away("https://coachcube-testing.vercel.app");
     }
 }

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('country_code')->nullable();
             $table->boolean('is_mentor');
             $table->string('message')->nullable();
+            $table->string('token')->nullable();
             $table->dateTime('verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();

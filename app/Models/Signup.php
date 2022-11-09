@@ -12,6 +12,7 @@ class Signup extends Model
     use HasFactory, HasUuids, SoftDeletes;
 
     protected $hidden = [
+        'token',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -31,8 +31,8 @@
                                     <td>{{ "{$row->country_code} {$row->phone}" }}</td>
                                     <td>{{ $row->industry->label }}</td>
                                     <td>{{ $row->message }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($row->created_at)->timezone('Europe/London')->format('d M Y H:i:s') }}</td>
-                                    <td>{{ $row->verified_at ? \Carbon\Carbon::parse($row->verified_at)->timezone('Europe/London')->format('d M Y H:i:s') : '-' }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($row->created_at)->timezone('Europe/London')->format('M d Y H:i:s') }}</td>
+                                    <td>{{ $row->verified_at ? \Carbon\Carbon::parse($row->verified_at)->timezone('Europe/London')->format('M d Y H:i:s') : '-' }}</td>
                                     {{-- <td>
                                         @if($hasAccessRead)
                                             <a

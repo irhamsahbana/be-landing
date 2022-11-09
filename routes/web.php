@@ -25,11 +25,14 @@ Route::get('/', function () {
 Route::group(['middleware' => ['guest']], function() {
     Route::view('/login', 'pages.LoginIndex')->name('auth.login');
     Route::post('login', [AuthController::class, 'attempt'])->name('auth.login-attempt');
+
+    Route::get('verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('auth.verify-email');
 });
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', function () {
-        return view('App');
+        // return view('App');
+        return redirect()->route('signup.index');
     })->name('app');
 
     Route::get('/home', function () {

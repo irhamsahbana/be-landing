@@ -7,10 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 use App\Libs\Response;
+use App\Mail\SendEmailVerificationLink;
+
 use App\Models\Signup;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -123,7 +128,22 @@ class AuthController extends Controller
             unset($fields['country_code']);
         }
 
-        $signup = Signup::create($fields);
+        DB::beginTransaction();
+        try {
+            $token = Str::uuid()->toString();
+            $fields['token'] = $token;
+            $signup = Signup::create($fields);
+
+            // send email to email address
+            $name = $signup->first_name . ' ' . $signup->last_name;
+            $email = new SendEmailVerificationLink($name, $fields['email'], $token);
+            Mail::to($fields['email'])->send($email);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $response->json(null, $e->getMessage(), HttpResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
 
         return $response->json($signup->toArray(), 'Signup success');
     }
