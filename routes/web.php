@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AccessRightController,
     AuthController,
-    CategoryController
+    CategoryController,
+    SignupController
 };
 
 /*
@@ -31,6 +32,10 @@ Route::group(['middleware' => ['auth']], function() {
         return view('App');
     })->name('app');
 
+    Route::get('/home', function () {
+        return redirect()->route('signup.index');
+    })->name('home');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     Route::get('access-rights/detail/{id}', [AccessRightController::class, 'show'])->name('access-right.show');
@@ -39,10 +44,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('access-rights', [AccessRightController::class, 'store'])->name('access-right.store');
     Route::get('access-rights', [AccessRightController::class, 'index'])->name('access-right.index');
 
-    Route::get('kategori/list', [CategoryController::class, 'list'])->name('category.list');
-    Route::delete('kategori/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-    Route::patch('kategori/{id}', [CategoryController::class, 'update'])->name('category.update');
-    Route::get('kategori/{id}', [CategoryController::class, 'show'])->name('category.show');
-    Route::get('kategori', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('kategori', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('categories/list', [CategoryController::class, 'list'])->name('category.list');
+    Route::delete('categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::patch('categories/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('categories/{id}', [CategoryController::class, 'show'])->name('category.show');
+    Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('categories', [CategoryController::class, 'store'])->name('category.store');
+
+    Route::get('signups', [SignupController::class, 'index'])->name('signup.index');
 });

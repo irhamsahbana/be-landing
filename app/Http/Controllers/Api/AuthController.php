@@ -79,11 +79,11 @@ class AuthController extends Controller
             'last_name' => ['required_without:first_name', 'string', 'max:255'],
             'email' => ['required', 'email:rfc,dns'],
             'country_code' => [
-                'required',
+                'nullable',
                 'integer',
                 'between:1,999',
             ],
-            'phone' => ['required', 'string', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:255'],
             'message' => ['nullable', 'string', 'max:150'],
         ];
 
@@ -99,7 +99,6 @@ class AuthController extends Controller
             'email.required' => 'Email cannot be empty.',
             'email.email' => 'Please enter a correct email address.',
 
-            'phone.required' => 'Phone number cannot be empty.',
             'phone.string' => 'Please enter a correct phone number.',
 
             'message.max' => 'Message cannot be more than 150 characters.',
@@ -115,8 +114,14 @@ class AuthController extends Controller
             $fields['country_code'] = str_replace('+', '', (string) $fields['country_code']);
 
         //remove all characters except numbers in phone number
-        if (isset($fields['phone']))
+        if (isset($fields['phone']) && !empty($fields['phone']))
             $fields['phone'] = preg_replace('/[^0-9]/', '', $fields['phone']);
+
+        //remove phone number and country code if phone number is empty
+        if (empty($fields['phone'])) {
+            unset($fields['phone']);
+            unset($fields['country_code']);
+        }
 
         $signup = Signup::create($fields);
 

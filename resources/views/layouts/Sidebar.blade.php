@@ -36,7 +36,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-header">Data</li>
-          <x-nav-item :icon="'fas fa-list'" :text="'Sign Up'" :href="route('category.list')" />
+          <x-nav-item :icon="'fas fa-list'" :text="'Sign Up'" :href="route('signup.index')" />
 
           <li class="nav-header">Master Data</li>
           <x-nav-item :icon="'fas fa-list'" :text="'Category List'" :href="route('category.list')" />

@@ -5,5 +5,5 @@
       {{-- Anything you want --}}
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2022 <a href="https://unhas.ac.id/v2/">Universitas Hasanuddin</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022 <a href="#">Powered by Coach Cube</a>.</strong> All rights reserved.
   </footer>
