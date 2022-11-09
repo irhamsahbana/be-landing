@@ -16,7 +16,7 @@
         @php
             $token = (string) $token;
             $link = (string) config('app.url');
-            $link .= "/verify-email?token=" . $token;
+            $link .= "/verify-email/" . $token;
         @endphp
 
         <a href="{{ $link }}">Verify Email</a>

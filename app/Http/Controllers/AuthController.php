@@ -35,9 +35,9 @@ class AuthController extends Controller
         return redirect()->route('auth.login');
     }
 
-    public function verifyEmail(Request $request)
+    public function verifyEmail($token)
     {
-        $data = Signup::where('token', $request->token)->first();
+        $data = Signup::where('token', $token)->first();
 
         if ($data) {
             $data->verified_at = now('UTC');
