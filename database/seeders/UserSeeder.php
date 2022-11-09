@@ -29,9 +29,9 @@ class UserSeeder extends Seeder
         $permissions = (collect($categories))->where('GROUP_BY', 'permissions');
 
         $user = new User();
-        $user->name = 'Lyvester';
-        $user->email = 'lyvester@coach-cube.com';
-        $user->username = 'lyvester';
+        $user->name = 'Sylvester';
+        $user->email = 'sylvester@coach-cube.com';
+        $user->username = 'sylvester';
         $user->password = bcrypt(config('seeder.DEFAULT_BACKOFFICE_PASSWORD'));
         $user->save();
 
