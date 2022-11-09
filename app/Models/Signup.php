@@ -17,7 +17,7 @@ class Signup extends Model
         'deleted_at',
     ];
 
-    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
+    protected $guarded = ['id', 'verfied_at', 'created_at', 'updated_at', 'deleted_at'];
 
     protected $casts = [
         'is_mentor' => 'boolean',

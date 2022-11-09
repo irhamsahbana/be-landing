@@ -8,30 +8,17 @@ d6e2d412-b46d-44e2-9bf5-570eeec548af,,marketing,Marketing,,industries
 a1c7af70-e4ba-4512-8f4e-4902883b68ee,,politics,Politics,,industries
 78e1220a-33a0-4c6b-83d2-e6b44285694b,,technology,Technology,,industries
 59c6280f-7db1-4643-b1f3-3541a844819e,,administrator,Administrator,Administrator,people
-44ad8a4e-7470-4311-a3dd-79264c9eff98,,customer,Customer,Pelanggan,people
+44ad8a4e-7470-4311-a3dd-79264c9eff98,,customer,Customer,Customer,people
 ab4e75c4-e045-40b3-b95a-92dfdfc798a6,,administrator,Administrator,Administrator,permission_groups
-fa41c125-2c03-413b-897e-ea87d781a806,,tutor,Tutor,Tutor,permission_groups
-6a3b3f6e-1e54-4714-8a13-3d4b55a2f44b,,access-right-create,access-right-create,Hak Akses - Buat,permissions
-9c6e4815-44b6-4552-a117-4e93b97117c8,,access-right-delete,access-right-delete,Hak Akses - Hapus,permissions
-a2c14ded-f748-44b9-ad9c-9be56cc17d91,,access-right-read,access-right-read,Hak Akses - Baca,permissions
-e91cf70b-d10b-48af-8473-e7a1100c04be,,access-right-update,access-right-update,Hak Akses - Ubah,permissions
-845043f5-9b85-4636-9b96-d36a36411cbb,,category-cities-create,category-cities-create,Kategori Kota - Buat,permissions
-c33fe32d-7082-4867-a246-a890a0670cc8,,category-cities-delete,category-cities-delete,Kategori Kota - Hapus,permissions
-5eed5f24-5d6e-4426-a8b5-eca6847eb530,,category-cities-read,category-cities-read,Kategori Kota - Baca,permissions
-e20b2966-86ff-4088-b6f8-a8ff1f8ed4df,,category-cities-update,category-cities-update,Kategori Kota - Ubah,permissions
-9e647e58-983e-4b77-a41e-755146187af7,,category-course_levels-create,category-course-level-create,Kategori Level Kursus - Buat,permissions
-7c2e7823-8caf-4d1c-bea1-b8c2e5aeb9e6,,category-course_levels-delete,category-course-level-delete,Kategori Level Kursus - Hapus,permissions
-9116d89a-71fb-44b6-aa4d-5959011d6bb3,,category-course_levels-read,category-course-level-read,Kategori Level Kursus - Baca,permissions
-ce83f852-d5d0-4068-b628-4064796e4064,,category-course_levels-update,category-course-level-update,Kategori Level Kursus - Ubah,permissions
-ecec942c-8d56-4b69-a8f3-2f0e79359078,,category-courses-create,category-course-create,kursus - Buat,permissions
-6cb57bc3-53d7-444d-a093-071e1ed27921,,category-courses-delete,category-course-delete,kursus - Hapus,permissions
-aee23fd5-605c-4cb8-9ae4-16b3c6a05f81,,category-courses-read,category-course-read,kursus - Baca,permissions
-799f319a-8f5d-4eb5-b1d2-4b8961d271ab,,category-courses-update,category-course-update,kursus - Ubah,permissions
-a21692bd-c5f6-4f6b-ab06-9e7a9cc5f443,,category-provinces-create,category-provinces-create,Kategori Provinsi - Buat,permissions
-918d6a85-797a-483b-884d-f33acd8e0b2c,,category-provinces-delete,category-provinces-delete,Kategori Provinsi - Hapus,permissions
-14154270-6f1c-43a7-ad86-4ce43a5a47ee,,category-provinces-read,category-provinces-read,Kategori Provinsi - Baca,permissions
-f15eae5f-4861-4f26-a1fb-0de615eec01a,,category-provinces-update,category-provinces-update,Kategori Provinsi - Ubah,permissions
-00871bed-5fe0-4ef2-a63c-7f50ce834263,,tutor-create,tutor-create,Tutor - Buat,permissions
-258c42a6-6267-44ad-96af-c9a71b873eeb,,tutor-delete,tutor-delete,Tutor - Hapus,permissions
-3be44724-8557-498c-b2da-f1a68c8faa47,,tutor-read,tutor-read,Tutor - Baca,permissions
-d78e8cbd-e9cb-4197-8795-abe63c419314,,tutor-update,tutor-update,Tutor - Ubah,permissions
+6a3b3f6e-1e54-4714-8a13-3d4b55a2f44b,,access-right-create,Access Right - Create,Access Right - Create,permissions
+9c6e4815-44b6-4552-a117-4e93b97117c8,,access-right-delete,Access Right -Delete,Access Right - Delete,permissions
+a2c14ded-f748-44b9-ad9c-9be56cc17d91,,access-right-read,Access Right - Read,Access Right - Read,permissions
+e91cf70b-d10b-48af-8473-e7a1100c04be,,access-right-update,Access Right - Update,Access Right - Update,permissions
+fd403a13-2310-492b-95bc-ceadf925705d,,category-industries-create,Industry Category - Create,Industry Category - Create,permissions
+e69e3b71-a5c1-4849-8e02-566a7633c265,,category-industries-delete,Industry Category - Delete,Industry Category - Delete,permissions
+6537fee3-12d3-488a-8c4a-9d93f7ede744,,category-industries-read,Industry Category - Read,Industry Category - Read,permissions
+6a1e10d8-af2d-4e61-904e-0195e27a0420,,category-industries-update,Industry Category - Update,Industry Category - Update,permissions
+ec6eb894-8d89-442b-994b-291a2c827b64,,sign-up-create,Sign Up - Create,Sign Up - Create,permissions
+3b880c82-e2b3-4418-b1f7-c6c913298e97,,sign-up-delete,Sign Up - Delete,Sign Up - Delete,permissions
+866da333-5697-4def-befa-7fa0bd0911a8,,sign-up-read,Sign Up - Read,Sign Up - Read,permissions
+97ddb2de-2bf4-43cd-b580-711de916854b,,sign-up-update,Sign Up - Update,Sign Up - Update,permissions

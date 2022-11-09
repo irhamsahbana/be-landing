@@ -29,10 +29,10 @@ class UserSeeder extends Seeder
         $permissions = (collect($categories))->where('GROUP_BY', 'permissions');
 
         $user = new User();
-        $user->name = 'Admin';
-        $user->email = 'admin@admin';
-        $user->username = 'admin';
-        $user->password = bcrypt('admin');
+        $user->name = 'Lyvester';
+        $user->email = 'lyvester@coach-cube.com';
+        $user->username = 'lyvester';
+        $user->password = bcrypt(config('seeder.DEFAULT_BACKOFFICE_PASSWORD'));
         $user->save();
 
         $adminPermissionGroup = Category::where([
