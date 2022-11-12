@@ -21,10 +21,11 @@
                     </x-col>
 
                     <x-col>
-                        <x-table :thead="['First Name', 'Last Name', 'Email', 'Phone', 'Industry', 'Message', 'Created At', 'Verified At'/*'Action'*/]">
+                        <x-table :thead="['Category', 'First Name', 'Last Name', 'Email', 'Phone', 'Industry', 'Message', 'Created At', 'Verified At'/*'Action'*/]">
                             @foreach($data as $row)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $row->is_mentor ? 'Mentor' : 'Mentee' }}</td>
                                     <td>{{ $row->first_name }}</td>
                                     <td>{{ $row->last_name }}</td>
                                     <td>{{ $row->email }}</td>

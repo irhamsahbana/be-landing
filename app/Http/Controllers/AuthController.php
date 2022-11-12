@@ -37,13 +37,15 @@ class AuthController extends Controller
 
     public function verifyEmail($token)
     {
-        $data = Signup::where('token', $token)->first();
+        $data = Signup::where('token', $token)
+                        ->whereNull('verified_at')
+                        ->first();
 
         if ($data) {
             $data->verified_at = now('UTC');
             $data->save();
         }
 
-        return redirect()->away("https://coachcube-testing.vercel.app");
+        return redirect()->away("https://coach-cube.com");
     }
 }
